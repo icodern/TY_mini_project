@@ -113,8 +113,8 @@ public class MessOwnerSignUp extends AppCompatActivity {
                     Log.e(TAG, "inside onDataChange : strTime : " + strTime);
                     Log.e(TAG, "inside onDataChange : str_offDay : " + str_offDay);
                     img = "https://data.tibettravel.org/assets/images/Tibet-bhutan-tour/indian-food-in-Lhasa.webp";
-
-                    MessUser newuser = new MessUser(img, str_ownerName, strTime, messAddr, name, pwd, messReg, str_offDay, str_phone);
+                    String avgRating="0";
+                    MessUser newuser = new MessUser(img, str_ownerName, strTime, messAddr, name, pwd, messReg, str_offDay, str_phone,avgRating);
 
                     table_user.child(str_phone).setValue(newuser);
 

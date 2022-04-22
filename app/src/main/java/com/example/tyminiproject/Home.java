@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "Home";
@@ -58,6 +59,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     ArrayList<MessUser> list;
     ImageView img_ViewDrawer;
     androidx.appcompat.widget.SearchView searchView;
+    int sum = 0;
+    int maxRating = 5;
+    int totalUsers = 0;
+    int strAvgRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,10 +149,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recycler_menu.setLayoutManager(layoutManager);
 
         context = this;
+        //getMessId();
         loadAllMess();
-        // loadMenu();
+
 
     }
+
 
     private void loadAllMess() {
 
@@ -175,6 +182,103 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             });
         }
 
+    }
+
+    private void getMessId() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference messUser_table = firebaseDatabase.getReference("MessUser");
+        messUser_table.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("Tag", "test1");
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    Map<String, Object> map = (Map<String, Object>) ds.getValue();
+                    Object rating = map.get("phone");
+                    strMob = String.valueOf(rating);
+                    Log.d(TAG, "getMessId : onDataChange: strmob : " + strMob);
+                    calculteRating(strMob);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void calculteRating(String strMessMob) {
+
+
+        // Log.e(TAG, "calculteRating: MessId : " + strMessMob);
+
+        DatabaseReference ratings_table = FirebaseDatabase.getInstance().getReference("Ratings");
+        ratings_table.orderByChild("messId").equalTo(strMessMob)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                        Log.i("Tag", "test1");
+
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            totalUsers++;
+
+                            // Log.d(TAG, "calculteRating : onDataChange: totalUsers" + totalUsers);
+                            Map<String, Object> map = (Map<String, Object>) ds.getValue();
+                            Object rating = map.get("rating");
+                            int pValue = Integer.parseInt(String.valueOf(rating));
+                            //Log.d(TAG, "calculteRating : onDataChange: pValue" + pValue);
+                            sum += pValue;
+                            // Log.d(TAG, "onDataChange: sum" + sum);
+                        }
+                        if (totalUsers != 0) {
+                            Log.d(TAG, "calculteRating : onDataChange: sum" + sum);
+                            Log.d(TAG, "calculteRating : onDataChange: maxRating" + maxRating);
+                            Log.d(TAG, "calculteRating : onDataChange: totalUsers" + totalUsers);
+                            strAvgRating = (sum * maxRating) / (totalUsers * maxRating);
+                            setMessRating(strAvgRating);
+                            Log.d(TAG, "calculteRating :onDataChange: if : strAvgRating" + strAvgRating);
+                        }
+                        // Log.d(TAG, "onDataChange: avgRating" + strAvgRating);
+
+                    }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w("TAG: ", databaseError.getMessage());
+                    }
+
+
+                });
+
+
+    }
+
+    private void setMessRating(int AvgRating) {
+
+        String newAvgRating = String.valueOf(AvgRating);
+
+        if (strMob != null) {
+
+            Log.d(TAG, "setMessRating: if : MessId : " + strMob);
+            Log.d(TAG, "setMessRating:if : newAvgRating" + newAvgRating);
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference messUser_table = firebaseDatabase.getReference("MessUser");
+            messUser_table.child(strMob).child("avgRating").setValue(newAvgRating);
+        } else {
+
+            Log.e(TAG, "setMessRating : else : MessId : " + strMob);
+        }
+        sum = 0;
+        maxRating = 5;
+        totalUsers = 0;
+        strAvgRating = 0;
+        // tvMessRating.setText("Overall Rating is : " + Common.currentMessUser.getAvgRating() + " / 5");
     }
 
 

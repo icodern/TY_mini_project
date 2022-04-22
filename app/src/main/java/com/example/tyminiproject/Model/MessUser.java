@@ -9,6 +9,28 @@ public class MessUser {
     private String Password;
     private String RegNo;
     private String offDay;
+    private String avgRating;
+
+    public MessUser(String image, String owner, String time, String address, String name, String password, String regNo, String offDay, String phone,String avgRating) {
+        Image = image;
+        Owner = owner;
+        Time = time;
+        Address = address;
+        Name = name;
+        Password = password;
+        RegNo = regNo;
+        this.offDay = offDay;
+        Phone = phone;
+        this.avgRating = avgRating;
+    }
+
+    public String getAvgRating() {
+        return avgRating;
+    }
+
+    public void setAvgRating(String avgRating) {
+        this.avgRating = avgRating;
+    }
 
     public String getOffDay() {
         return offDay;

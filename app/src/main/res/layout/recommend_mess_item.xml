@@ -11,6 +11,8 @@
         android:layout_height="wrap_content">
 
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +39,9 @@
                         android:layout_marginTop="5dp"
                         android:alpha="0.5"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_launcher_foreground" />
+                        android:src="@drawable/ic_baseline_restaurant_24" />
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -47,18 +51,60 @@
                         android:alpha="0.6"
                         android:background="@color/black" />
 
+                    <TextView
+                        android:id="@+id/tvMyRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="rating = 5"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="75dp">
+
+                    <ImageView
+                        android:id="@+id/menu_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="5dp"
+                        android:alpha="0.5"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_foreground" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="5dp"
+                        android:background="#e4e4e4" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:layout_margin="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginLeft="20dp"
+
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profile_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_launcher_background" />
+                            android:src="@drawable/pimg2"
+                            />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -73,11 +119,11 @@
                                 android:orientation="vertical">
 
                                 <TextView
+
                                     android:id="@+id/RmessName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Kalpendra mess , Alandi"
-                                    android:textColor="@color/white"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
 
@@ -89,7 +135,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:text="Nishant Jadhav"
-                                    android:textColor="@color/white"
                                     android:textSize="12sp"
 
                                     />

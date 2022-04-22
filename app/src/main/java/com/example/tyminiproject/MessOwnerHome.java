@@ -32,6 +32,7 @@ import com.example.tyminiproject.Common.Common;
 import com.example.tyminiproject.Interface.ItemClickListner;
 import com.example.tyminiproject.Model.Food;
 import com.example.tyminiproject.Model.MessUser;
+import com.example.tyminiproject.Model.Request;
 import com.example.tyminiproject.ViewHolder.FoodViewHolder;
 import com.example.tyminiproject.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -50,6 +51,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class MessOwnerHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,7 +60,7 @@ public class MessOwnerHome extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     Toolbar toolbar;
     Menu menu;
-    TextView tvRegNo, tvMessName;
+    TextView tvRegNo, tvMessName, tvMessRating;
     FirebaseDatabase database;
     DatabaseReference category;
     FirebaseStorage storage;
@@ -132,6 +134,8 @@ public class MessOwnerHome extends AppCompatActivity implements NavigationView.O
         View headerView = navigationView.getHeaderView(0);
         tvMessName = headerView.findViewById(R.id.MessName);
         tvMessName.setText(Common.currentMessUser.getName());
+        tvMessRating = headerView.findViewById(R.id.tvMyRating);
+        tvMessRating.setText(Common.currentMessUser.getAvgRating());
         tvRegNo = headerView.findViewById(R.id.tv_RegNO);
         tvRegNo.setText(Common.currentMessUser.getRegNo());
 

@@ -27,7 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.MyViewHolder> {
 
@@ -53,6 +55,7 @@ public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.My
         holder.tvTime.setText(list.get(position).getTime());
         holder.tvOwmner.setText(list.get(position).getOwner());
         holder.tvOffday.setText(list.get(position).getOffDay());
+      //  holder.tvMessRating.setText(list.get(position).getAvgRating());
 
         Picasso.with(context).load(list.get(position).getImage())
                 .into(holder.MenuImage);
@@ -71,6 +74,7 @@ public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.My
             }
         });
 
+
         holder.btn_messInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +85,9 @@ public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.My
             }
         });
 
+
     }
+
 
     private void getMessInfo(String messId) {
 
@@ -126,7 +132,7 @@ public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.My
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView MessName, tvTime, tvOwmner, tvOffday;
+        public TextView MessName, tvTime, tvOwmner, tvOffday, tvMessRating;
         public ImageView MenuImage;
         public ItemClickListner itemClickListner;
         public Button btn_ViewMess;
@@ -140,6 +146,7 @@ public class SearchMessAdapter extends RecyclerView.Adapter<SearchMessAdapter.My
             tvTime = itemView.findViewById(R.id.tvTime);
             tvOffday = itemView.findViewById(R.id.tvoffDay);
 
+            //tvMessRating = itemView.findViewById(R.id.tvMyRating);
             btn_ViewMess = itemView.findViewById(R.id.btn_ViewMess);
 
             btn_messInfo = itemView.findViewById(R.id.btn_messInfo);

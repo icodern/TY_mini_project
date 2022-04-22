@@ -5,110 +5,130 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:background="@color/green">
+
     <LinearLayout
 
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp">
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/ic_component_3___1"/>
+                android:src="@drawable/ic_component_3___1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center_vertical"
-            >
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/MessName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pratik Pawar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#ffff"
-                android:textSize="20sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"  />
+                android:textSize="20sp" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:id="@+id/tv_RegNO"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="8291534304"
                 android:textColor="#ffff"
                 android:textSize="16sp"
                 app:fontFamily="sans-serif-condensed" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMyRating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="5"
+
+                    android:textColor="#ffff"
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/ic_star" />
+
+            </LinearLayout>
         </LinearLayout>
 
 
-
-
-
-
     </LinearLayout>
-
 
 
 </RelativeLayout>
 
     <!--<?xml version="1.0" encoding="utf-8"?>-->
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:background="@color/overlayBackground"-->
-<!--    android:gravity="center"-->
-<!--    android:orientation="vertical"-->
-<!--    android:padding="10dp">-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:background="@color/overlayBackground"-->
+    <!--    android:gravity="center"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:padding="10dp">-->
 
-<!--    <ImageView-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:background="@drawable/ic_baseline_restaurant_24" />-->
+    <!--    <ImageView-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:background="@drawable/ic_baseline_restaurant_24" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/MessName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="mess name"-->
-<!--        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--        android:textColor="#ffff"-->
-<!--        android:textSize="24sp" />-->
-<!--    &lt;!&ndash;-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/MessName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="mess name"-->
+    <!--        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+    <!--        android:textColor="#ffff"-->
+    <!--        android:textSize="24sp" />-->
+    <!--    &lt;!&ndash;-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/messOwnerName"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="mess Owner"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--            android:textColor="#ffff"-->
-<!--            android:textSize="24sp" />-->
-<!--    &ndash;&gt;-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/messOwnerName"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="mess Owner"-->
+    <!--            android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+    <!--            android:textColor="#ffff"-->
+    <!--            android:textSize="24sp" />-->
+    <!--    &ndash;&gt;-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/tv_RegNO"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Registration no"-->
-<!--        android:textColor="#ffff"-->
-<!--        android:textSize="16sp"-->
-<!--        app:fontFamily="sans-serif-condensed" />-->
-<!--</LinearLayout>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_RegNO"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Registration no"-->
+    <!--        android:textColor="#ffff"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:fontFamily="sans-serif-condensed" />-->
+    <!--</LinearLayout>-->
